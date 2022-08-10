@@ -104,7 +104,8 @@ public class AESService {
 
     }
 
-    public void downloadDecrypted(File file) {
+    public void downloadDecrypted(String fileName) {
+        File file = new File(fileName);
         String secret = "Beks";
         try (Reader reader = new FileReader(file); BufferedReader bufferedReader = new BufferedReader(reader)) {
             String line = bufferedReader.readLine();

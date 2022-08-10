@@ -31,22 +31,12 @@ public class AESController {
     }
 
     @GetMapping(value = "/getDecrypted/{file}")
-    public void getDecrypted(@RequestParam("file") File file) {
+    public void getDecrypted(@RequestParam("file")String file) {
         //  return ResponseEntity.ok().body(service.downloadEncrypted(file, secret));
         service.downloadDecrypted(file);
 
     }
-    @PostMapping("/upload")
-    public ResponseEntity<?> handleFileUpload( @RequestParam("file") MultipartFile file ) {
 
-        String fileName = file.getOriginalFilename();
-        try {
-            file.transferTo( new File("C:\\upload\\" + fileName));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-        return ResponseEntity.ok("File uploaded successfully.");
-    }
 
 
 }
